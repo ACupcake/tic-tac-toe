@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# React Memory Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Memory game screen](https://raw.githubusercontent.com/ACupcake/memory-game/main/static/images/memory_game.png)
 
 ## Available Scripts
 
