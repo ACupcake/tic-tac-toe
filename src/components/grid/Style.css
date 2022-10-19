@@ -2,7 +2,7 @@
     display: grid;
     grid-template-rows: repeat(3, 1fr);
 
-    background-color: var(--tan);
+    background-color: var(--forest-white);
     width: 600px;
     height: 600px;
 }
@@ -20,13 +20,12 @@
     font-size: 100px;
     user-select: none;
 
-    border: 1px solid black;
+    border: 1px solid var(--grey-blue);
+    color: var(--grey-blue);
 
     transition: background 0.3s;
-    transition: font-size 0.3s;
 }
 
 .square:hover {
-    background: var(--dark-tan);
-    font-size: 110px;
+    background: var(--dark-forest-white);
 }

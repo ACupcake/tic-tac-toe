@@ -19,7 +19,8 @@ function Game() {
   const [turn, setTurn] = useState<"x"|"o">("x");
   const [points, setPoints] = useState({
     x: 0,
-    o: 0
+    o: 0,
+    draw: 0
   })
 
   const selectTurn = () => {
@@ -77,15 +78,17 @@ function Game() {
   }
 
   const win = (winner: string) => {
-    if (winner === "") {
+    // TODO: better winner screen 
+    if (winner === "draw") {
       alert("draw!");
     } else {
       alert(winner + " win!");
-      setPoints({
-        ...points,
-        [winner]: points[winner as "x"|"o"] + 1
-      })
     }
+
+    setPoints({
+      ...points,
+      [winner]: points[winner as "x"|"o"|"draw"] + 1
+    })
     resetGrid();
     setTurn('x')
   }
@@ -125,7 +128,7 @@ function Game() {
       win(diagonalWinner);
     }
     else if (checkDraw()) {
-      win("");
+      win("draw");
     }
   }
 
@@ -144,11 +147,15 @@ function Game() {
   return (
     <div className="container">
       <Header
-        title="Tic-Tac-Toe"
-        player1={points.x}
-        player2={points.o}
+        x={points.x}
+        o={points.o}
+        draw={points.draw}
       />
       <Grid grid={grid} markGrid={markGrid}/>
+      <h1 className="turn">
+        <div>Turn</div>
+        {turn}
+      </h1>
     </div>
   );
 }

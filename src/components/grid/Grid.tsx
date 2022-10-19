@@ -14,7 +14,7 @@ function Grid({ grid, markGrid }:IGrid) {
     )
   }
 
-  function generateRow(y:number) {
+  function GenerateRow(y:number) {
     let rowList = []
     
     for (let j = 0; j < 3; j++) {
@@ -28,7 +28,7 @@ function Grid({ grid, markGrid }:IGrid) {
     let squareList:any = []
 
     for (let i = 0; i < 3; i++) {
-        squareList.push(generateRow(i));
+        squareList.push(GenerateRow(i));
     }
 
     return squareList;

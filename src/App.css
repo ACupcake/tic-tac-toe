@@ -1,6 +1,7 @@
 :root {
-  --tan: tan;
-  --dark-tan: rgb(165, 140, 108);
-  --red: red;
-  --blue: blue
+  --light-blue: #c8c8ff;
+  --grey-blue: #525e75;
+  --forest-white: #f1ddbf;
+  --dark-forest-white: #dbc9ae;
+  --green-forest: #92ba92;
 }
