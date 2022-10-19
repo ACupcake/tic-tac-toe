@@ -1,6 +1,6 @@
-# React Memory Game
+# React Tic-Tac-Toe
 
-![Memory game screen](https://raw.githubusercontent.com/ACupcake/memory-game/main/static/images/memory_game.png)
+![Tic Tac Toe game screen](https://raw.githubusercontent.com/ACupcake/tic-tac-toe/main/static/images/tictactoe.png)
 
 ## Available Scripts
 
