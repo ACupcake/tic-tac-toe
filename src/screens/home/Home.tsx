@@ -16,7 +16,7 @@ function Home() {
       ["", "", ""]
     ]
   );
-  const [turn, setTurn] = useState<string>("x");
+  const [turn, setTurn] = useState<"x"|"o">("x");
   const [points, setPoints] = useState({
     x: 0,
     o: 0
@@ -31,24 +31,34 @@ function Home() {
   }
 
   const checkRowWin = (y: number) => {
-    return grid[y][0] === grid[y][1] && grid[y][1] === grid[y][2] && grid[y][0] !== "";
+    let won = grid[y][0] === grid[y][1] && grid[y][1] === grid[y][2] && grid[y][0] !== "";
+
+    if (won) {
+      return grid[y][0];
+    }
+    return null;
   }
   
   const checkColWin = (x: number) => {
-    return grid[0][x] === grid[1][x] && grid[1][x] === grid[2][x] && grid[0][x] !== "";
+    let won =  grid[0][x] === grid[1][x] && grid[1][x] === grid[2][x] && grid[0][x] !== "";
+
+    if (won) {
+      return grid[0][x];
+    }
+    return null;
   }
 
   const checkDiagonalWin = () => {
     if (grid[1][1] === "") {
-      return false;
+      return null;
     }
     if (grid[0][0] === grid[1][1] && grid[1][1] === grid[2][2]) {
-      return true;
+      return grid[1][1];
     }
     if (grid[0][2] === grid[1][1] && grid[1][1] === grid[2][0]) {
-      return true;
+      return grid[1][1];
     }
-    return false;
+    return null;
   }
 
   const checkDraw = () => {
@@ -77,34 +87,44 @@ function Home() {
       })
     }
     resetGrid();
+    setTurn('x')
+  }
+
+  function checkRows() {
+    let winner = null;
+
+    for (let i = 0; i < 3; i++) {
+      winner = checkRowWin(i) || winner;
+    }
+
+    return winner;
+  }
+
+  function checkColumns() {
+    let winner = null;
+
+    for (let i = 0; i < 3; i++) {
+      winner = checkColWin(i) || winner;
+    }
+
+    return winner;
   }
 
   const checkWinner = () => {
-    if (checkRowWin(0)) {
-      win(grid[0][0]);
+    let rowWinner = checkRows();
+    let columnWinner = checkColumns();
+    let diagonalWinner = checkDiagonalWin();
+    
+    if (rowWinner) {
+      win(rowWinner);
     }
-    if (checkRowWin(1)) {
-      win(grid[1][0]);
+    else if (columnWinner) {
+      win(columnWinner);
     }
-    if (checkRowWin(2)) {
-      win(grid[2][0]);
+    else if (diagonalWinner) {
+      win(diagonalWinner);
     }
-
-    if (checkColWin(0)) {
-      win(grid[0][0]);
-    }
-    if (checkColWin(1)) {
-      win(grid[0][1]);
-    }
-    if (checkColWin(2)) {
-      win(grid[0][2]);
-    }
-
-    if (checkDiagonalWin()) {
-      win(grid[1][1]);
-    }
-
-    if (checkDraw()) {
+    else if (checkDraw()) {
       win("");
     }
   }
