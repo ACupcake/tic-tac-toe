@@ -3,7 +3,7 @@ import Grid from "../../components/grid/Grid"
 import Header from "../../components/header/Header";
 import './Style.css';
 
-function Home() {
+function Game() {
   const initialGrid: string[][]= [
                     ["", "", ""],
                     ["", "", ""],
@@ -153,4 +153,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Game;

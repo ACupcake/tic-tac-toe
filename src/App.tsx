@@ -1,9 +1,9 @@
-import Home from "./screens/home/Home"
+import Game from "./screens/home/Game"
 import "./App.css"
 
 function App() {
   return (
-    <Home />
+    <Game />
   );
 }
 
