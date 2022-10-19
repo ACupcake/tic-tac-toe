@@ -6,41 +6,38 @@ type IGrid = {
 }
 
 function Grid({ grid, markGrid }:IGrid) {
+  function Square(y: number, x:number) {
+    return (
+      <div key={String(y) + String(x)} className="square" onClick={() => markGrid(y, x)}>
+        {grid[y][x]}
+      </div>
+    )
+  }
+
+  function generateRow(y:number) {
+    let rowList = []
+    
+    for (let j = 0; j < 3; j++) {
+      rowList.push(Square(y, j))
+    }
+
+    return (<div className="row">{rowList}</div>)
+  }
+
+  const GenerateGrid = () => {
+    let squareList:any = []
+
+    for (let i = 0; i < 3; i++) {
+        squareList.push(generateRow(i));
+    }
+
+    return squareList;
+  }
+
+
     return (
       <div className="grid">
-        <div className="row">
-          <div className="square" onClick={() => markGrid(0, 0)}>
-            {grid[0][0]}
-          </div>
-          <div className="square" onClick={() => markGrid(0, 1)}>
-            {grid[0][1]}
-          </div>
-          <div className="square" onClick={() => markGrid(0, 2)}>
-            {grid[0][2]}
-          </div>
-        </div>
-        <div className="row">
-            <div className="square" onClick={() => markGrid(1, 0)}>
-              {grid[1][0]}
-            </div>
-            <div className="square" onClick={() => markGrid(1, 1)}>
-              {grid[1][1]}
-            </div>
-            <div className="square" onClick={() => markGrid(1, 2)}>
-              {grid[1][2]}
-            </div>
-        </div>
-        <div className="row">
-            <div className="square" onClick={() => markGrid(2, 0)}>
-              {grid[2][0]}
-            </div>
-            <div className="square" onClick={() => markGrid(2, 1)}>
-              {grid[2][1]}
-            </div>
-            <div className="square" onClick={() => markGrid(2, 2)}>
-              {grid[2][2]}
-            </div>
-        </div>
+        <GenerateGrid />
       </div>
     );
   }
