@@ -1,0 +1,21 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+}
+
+.header-title {
+    color: var(--dark-tan);
+}
+
+.points {
+
+}
+
+.player1 {
+    color: var(--blue);
+}
+
+.player2 {
+    color: var(--red);
+}
